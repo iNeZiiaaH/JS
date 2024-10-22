@@ -17,7 +17,7 @@ Ce projet est un petit jeu en JavaScript où l'utilisateur doit deviner un nombr
 
 1. Clonez ou téléchargez le projet :
     ```bash
-    git clone https://github.com/votre-utilisateur/juste-nombre.git
+    git clone https://github.com/iNeZiiaaH/JS.git
     ```
 
 2. Ouvrez le fichier `index.html` dans votre navigateur.
