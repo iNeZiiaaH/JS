@@ -1,3 +1,4 @@
+                            //Version 1.0
 // let nombreADeviner = Math.floor(Math.random() * 100) + 1;
 // let essais = 0;
 
@@ -19,6 +20,7 @@
 //     }
 // }
 
+                            //Version 2.0 
 // let nombreADeviner = Math.floor(Math.random() * 100) + 1;
 // let essais = 0;
 // const maxEssais = 10; 
@@ -62,6 +64,7 @@
 // }
 
 
+                           //Version 3.0
 let nombreADeviner;
 let essais = 0;
 let maxEssais;
