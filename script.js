@@ -1,4 +1,4 @@
-                            //Version 1.0
+//Version 1.0
 // let nombreADeviner = Math.floor(Math.random() * 100) + 1;
 // let essais = 0;
 
@@ -20,7 +20,7 @@
 //     }
 // }
 
-                            //Version 2.0 
+//Version 2.0 
 // let nombreADeviner = Math.floor(Math.random() * 100) + 1;
 // let essais = 0;
 // const maxEssais = 10; 
@@ -28,7 +28,7 @@
 // function devinerNombre() {
 //     let userGuess = parseInt(document.getElementById("guessInput").value);
 //     essais++;
-    
+
 //     let message = document.getElementById("message");
 //     let compteurEssais = document.getElementById("compteurEssais");
 
@@ -64,7 +64,7 @@
 // }
 
 
-                           //Version 3.0
+                             //Version 3.0
 let nombreADeviner;
 let essais = 0;
 let maxEssais;
@@ -101,10 +101,13 @@ function devinerNombre() {
     let message = document.getElementById("message");
     let compteurEssais = document.getElementById("compteurEssais");
 
+    if (isNaN(userGuess) || userGuess < 1 ||
+        (userGuess > 20 && maxEssais === 8) ||
+        (userGuess > 50 && maxEssais === 5) ||
+        (userGuess > 100 && maxEssais === 3)) {
 
-    if (isNaN(userGuess) || userGuess < 1 || (userGuess > 20 && maxEssais == 8) || (userGuess > 50 && maxEssais == 5) || (userGuess > 100 && maxEssais == 3)) {
         message.textContent = `Veuillez entrer un nombre valide pour le mode de difficulté choisi !`;
-        essais--; 
+        essais--;
         numerosEssais.pop();
     } else if (userGuess < nombreADeviner) {
         message.textContent = "C'est plus !";
@@ -117,6 +120,9 @@ function devinerNombre() {
 
     compteurEssais.textContent = `Essais : ${essais}`;
 
+    // Affiche l'historique des nombres essayés à chaque essai
+    document.getElementById("historique").textContent = `Nombres essayés : ${numerosEssais.join(", ")}`;
+
     if (essais >= maxEssais && userGuess !== nombreADeviner) {
         message.textContent = `Désolé, vous avez atteint la limite de ${maxEssais} essais. Le nombre était ${nombreADeviner}.`;
         finDuJeu();
@@ -126,9 +132,6 @@ function devinerNombre() {
 function finDuJeu() {
     document.getElementById("guessInput").disabled = true;
     document.getElementById("guessButton").disabled = true;
-
-    let historique = document.getElementById("historique");
-    historique.textContent = `Nombres essayés : ${numerosEssais.join(", ")}`;
 
     afficherBoutonRejouer();
 }
