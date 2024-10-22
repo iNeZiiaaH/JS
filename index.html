@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du Juste Nombre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Devinez le Juste Nombre !</h1>
+
+        <p>Choisissez un niveau de difficulté :</p>
+        <select id="difficulte" onchange="choisirDifficulte()">
+            <option value="">-- Choisissez la difficulté --</option>
+            <option value="facile">Facile (1-20, 8 essais)</option>
+            <option value="moyen">Moyen (1-50, 5 essais)</option>
+            <option value="difficile">Difficile (1-100, 3 essais)</option>
+        </select>
+
+        <p>Entrez un nombre :</p>
+        <input type="number" id="guessInput" min="1" max="100" disabled>
+        <button id="guessButton" onclick="devinerNombre()" disabled>Deviner</button>
+
+        <div class="message" id="message"></div>
+        <div class="compteur" id="compteurEssais">Essais : 0</div>
+        <div class="historique" id="historique"></div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
