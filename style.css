@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f4f8;
+    background: linear-gradient(135deg, #f0f4f8, #e9eff1);
     color: #333;
     display: flex;
     justify-content: center;
@@ -10,44 +10,77 @@ body {
 }
 
 .container {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #28a745;
     margin-bottom: 20px;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 select, input[type="number"] {
     width: 80%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus, input[type="number"]:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
     background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     margin-top: 10px;
+    position: relative;
+    overflow: hidden;
 }
 
 button:hover {
     background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 button:disabled {
@@ -59,6 +92,7 @@ button:disabled {
     margin-top: 20px;
     font-size: 18px;
     color: #333;
+    transition: opacity 0.3s ease;
 }
 
 .compteur, .historique {
@@ -73,17 +107,17 @@ button:disabled {
     }
 
     h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     select, input[type="number"] {
         font-size: 14px;
-        padding: 8px;
+        padding: 10px;
     }
 
     button {
         font-size: 14px;
-        padding: 8px 16px;
+        padding: 10px 20px;
     }
 
     .message, .compteur, .historique {
