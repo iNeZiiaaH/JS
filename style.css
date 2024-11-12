@@ -101,6 +101,42 @@ button:disabled {
     color: #666;
 }
 
+.message {
+    font-size: 1.2em;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.message.fade {
+    opacity: 1;
+}
+
+.message.info {
+    color: #333;
+    background-color: #e0f7fa;
+}
+
+.message.success {
+    color: #155724;
+    background-color: #d4edda;
+}
+
+.message.error {
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+.message.warning {
+    color: #856404;
+    background-color: #fff3cd;
+}
+
+
+
 @media (max-width: 768px) {
     .container {
         padding: 30px;
