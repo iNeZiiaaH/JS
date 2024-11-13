@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #f0f4f8, #e9eff1);
+    background: linear-gradient(135deg, #f0f4f8, #919fa3);
     color: #333;
     display: flex;
     justify-content: center;
@@ -13,7 +13,7 @@ body {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
     text-align: center;
@@ -22,7 +22,7 @@ body {
 
 .container:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 25px rgba(255, 0, 0, 0.3);
 }
 
 h1 {
@@ -37,13 +37,15 @@ h1 {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-select, input[type="number"] {
+select,
+input[type="number"] {
     width: 80%;
     padding: 12px;
     font-size: 16px;
@@ -53,7 +55,8 @@ select, input[type="number"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-select:focus, input[type="number"]:focus {
+select:focus,
+input[type="number"]:focus {
     border-color: #28a745;
     box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
 }
@@ -95,7 +98,8 @@ button:disabled {
     transition: opacity 0.3s ease;
 }
 
-.compteur, .historique {
+.compteur,
+.historique {
     margin-top: 10px;
     font-size: 16px;
     color: #666;
@@ -135,8 +139,6 @@ button:disabled {
     background-color: #fff3cd;
 }
 
-
-
 @media (max-width: 768px) {
     .container {
         padding: 30px;
@@ -146,7 +148,8 @@ button:disabled {
         font-size: 2rem;
     }
 
-    select, input[type="number"] {
+    select,
+    input[type="number"] {
         font-size: 14px;
         padding: 10px;
     }
@@ -156,7 +159,161 @@ button:disabled {
         padding: 10px 20px;
     }
 
-    .message, .compteur, .historique {
+    .message,
+    .compteur,
+    .historique {
         font-size: 14px;
+    }
+}
+
+/* Styles pour la modale de fail */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: #f8d7da;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.4s ease-in-out;
+    transition: transform 0.3s ease;
+    /* Transition pour zoomer */
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Effet zoom au survol */
+.modal-content:hover {
+    transform: scale(1.1);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.6rem;
+    color: #721c24;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #555;
+}
+
+.modal p {
+    font-size: 1.2rem;
+    color: #721c24;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+/* Styles pour la modale de Win */
+#winModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#winModal .modal-content {
+    background-color: #d4edda;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.4s ease-in-out;
+    transition: transform 0.3s ease;
+    /* Transition pour zoomer */
+}
+
+/* Effet zoom au survol */
+#winModal .modal-content:hover {
+    transform: scale(1.1);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.6rem;
+    color: #155724;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #0c4623;
+}
+
+#winModal p {
+    font-size: 1.2rem;
+    color: #155724;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Animation des confettis */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+    }
+
+    to {
+        transform: scale(1);
     }
 }

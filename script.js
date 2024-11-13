@@ -83,7 +83,7 @@ function choisirDifficulte() {
         miseAJourAffichage(true);
         afficherMessage("🎉 Jeu démarré ! Devinez le nombre entre 1 et " + paramsDifficulte[difficulte].max + ".", "info");
     } else {
-        afficherMessage("⚠️ Choisissez un niveau de difficulté pour commencer le jeu.", "error");
+        afficherErreur("⚠️ Choisissez un niveau de difficulté pour commencer le jeu.", "error");
     }
 }
 
@@ -91,7 +91,7 @@ function devinerNombre() {
     const userGuess = parseInt(document.getElementById("guessInput").value);
 
     if (!estNombreValide(userGuess)) {
-        afficherMessage(`🚫 Entrée invalide. Saisissez un nombre entre 1 et ${maxNombreSelonDifficulte()}.`, "error");
+        afficherErreur(`🚫 Entrée invalide. Saisissez un nombre entre 1 et ${maxNombreSelonDifficulte()}.`);
         return;
     }
 
@@ -100,15 +100,36 @@ function devinerNombre() {
 
     if (userGuess === nombreADeviner) {
         afficherMessage(`🎉 Bravo ! Vous avez trouvé le nombre ${nombreADeviner} en ${essais} essais !`, "success");
+        afficherModalWin(`🎉 Félicitations ! Vous avez gagné en ${essais} essais !`);
+        lancerConfettis();
         finDuJeu();
     } else if (essais >= maxEssais) {
-        afficherMessage(`😞 Vous avez épuisé vos essais. Le nombre correct était ${nombreADeviner}.`, "warning");
+        afficherErreur(`😞 Vous avez épuisé vos essais. Le nombre correct était ${nombreADeviner}.`, "warning");
         finDuJeu();
     } else {
         const hint = userGuess < nombreADeviner ? "C'est plus !" : "C'est moins !";
-        afficherMessage(`❌ Incorrect. ${hint} Essayez encore !`, "info");
+        afficherErreur(`❌ Incorrect. ${hint} Essayez encore !`, "info");
         miseAJourAffichage();
     }
+}
+
+function afficherModalWin(message) {
+    const winModal = document.getElementById("winModal");
+    document.getElementById("winMessage").textContent = message;
+    winModal.style.display = "flex";
+}
+
+function fermerModalWin() {
+    document.getElementById("winModal").style.display = "none";
+}
+
+function lancerConfettis() {
+    confetti({
+        particleCount: 600,
+        spread: 660,
+        origin: { x: 0.5, y: 0.5 },
+        colors: ['#ff4d4d', '#ffdd4d', '#4dff4d', '#4d9eff'],
+    });
 }
 
 function estNombreValide(nombre) {
@@ -131,6 +152,16 @@ function maxNombreSelonDifficulte() {
     return maxEssais === 8 ? 20 : maxEssais === 5 ? 50 : 100;
 }
 
+function afficherErreur(texte) {
+    const modal = document.getElementById("errorModal");
+    document.getElementById("errorMessage").textContent = texte;
+    modal.style.display = "flex";
+}
+
+function fermerModal() {
+    document.getElementById("errorModal").style.display = "none";
+}
+
 function finDuJeu() {
     document.getElementById("guessInput").disabled = true;
     document.getElementById("guessButton").disabled = true;
@@ -150,5 +181,3 @@ function afficherMessage(texte, type) {
     messageElement.textContent = texte;
     messageElement.className = `message ${type} fade`;
 }
-
-

@@ -1,35 +1,62 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu du Juste Nombre</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jeu du Juste Nombre</title>
+        <link rel="icon" href="img/boite-mystere.png" type="image/png" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <img
+                src="img/boite-mystere.png"
+                alt="Icône"
+                style="width: 80px; vertical-align: middle; margin-right: 8px"
+            />
+            <h1>Devinez le Juste Nombre !</h1>
 
-    <div class="container">
-        <h1>Devinez le Juste Nombre !</h1>
+            <p>Choisissez un niveau de difficulté :</p>
+            <select id="difficulte" onchange="choisirDifficulte()">
+                <option value="">-- Choisissez la difficulté --</option>
+                <option value="facile">Facile (1-20, 8 essais)</option>
+                <option value="moyen">Moyen (1-50, 5 essais)</option>
+                <option value="difficile">Difficile (1-100, 3 essais)</option>
+            </select>
 
-        <p>Choisissez un niveau de difficulté :</p>
-        <select id="difficulte" onchange="choisirDifficulte()">
-            <option value="">-- Choisissez la difficulté --</option>
-            <option value="facile">Facile (1-20, 8 essais)</option>
-            <option value="moyen">Moyen (1-50, 5 essais)</option>
-            <option value="difficile">Difficile (1-100, 3 essais)</option>
-        </select>
+            <p>Entrez un nombre :</p>
+            <input type="number" id="guessInput" min="1" max="100" disabled />
+            <button id="guessButton" onclick="devinerNombre()" disabled>
+                Deviner
+            </button>
 
-        <p>Entrez un nombre :</p>
-        <input type="number" id="guessInput" min="1" max="100" disabled>
-        <button id="guessButton" onclick="devinerNombre()" disabled>Deviner</button>
+            <div class="message" id="message"></div>
+            <div class="compteur" id="compteurEssais">Essais : 0</div>
+            <div class="historique" id="historique">Nombres essayés :</div>
+        </div>
 
-        <div class="message" id="message"></div>
-        <div class="compteur" id="compteurEssais">Essais : 0</div>
-        <div class="historique" id="historique">Nombres essayés : </div>
-    </div>
+        <!-- Modal fail -->
+        <div id="errorModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="fermerModal()">&times;</span>
+                <p id="errorMessage"></p>
+            </div>
+        </div>
 
-    <script src="script.js"></script>
+        <!-- Modal Win -->
+        <div id="winModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="fermerModalWin()">&times;</span>
+                <p id="winMessage"></p>
+            </div>
+        </div>
 
-</body>
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+    </body>
 </html>
